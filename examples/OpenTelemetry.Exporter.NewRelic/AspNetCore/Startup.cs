@@ -34,6 +34,8 @@ namespace SampleAspNetCoreApp
                     {
                         options.ApiKey = this.Configuration.GetValue<string>("NewRelic:ApiKey");
                         options.ServiceName = this.Configuration.GetValue<string>("NewRelic:ServiceName");
+                        options.TraceUrl = new System.Uri(this.Configuration.GetValue<string>("NewRelic:TraceUrlOverride"));
+                        options.AuditLoggingEnabled = this.Configuration.GetValue<bool>("NewRelic:AuditLoggingEnabled");
                     }, loggerFactory)
                     .AddAspNetCoreInstrumentation()
                     .AddHttpClientInstrumentation();

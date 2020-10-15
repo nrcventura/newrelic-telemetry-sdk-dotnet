@@ -276,6 +276,12 @@ namespace NewRelic.Telemetry.Transport
                 var streamContent = new StreamContent(memoryStream);
                 streamContent.Headers.Add("Content-Type", "application/json; charset=utf-8");
                 streamContent.Headers.Add("Content-Encoding", "gzip");
+
+                // -H 'Data-Format: newrelic' - H 'Data-Format-Version: 1'
+
+                // streamContent.Headers.Add("Data-Format", "newrelic");
+
+                // streamContent.Headers.Add("Data-Format-Version", "1");
                 streamContent.Headers.ContentLength = memoryStream.Length;
 
                 var requestMessage = new HttpRequestMessage(HttpMethod.Post, EndpointUrl);
